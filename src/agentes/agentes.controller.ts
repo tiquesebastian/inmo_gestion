@@ -14,12 +14,12 @@ export class AgentesController {
 
   @Get()
   findAll() {
-    return "aqui se van a consultar los agentes";
+    return this.agentesService.findAll();
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return `aqui se va a consultar el agente cuyo id es: ${id}`;
+    return this.agentesService.findOne(+id);
   }
 
   @Patch(':id')
@@ -29,6 +29,10 @@ export class AgentesController {
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return `aqui se va a eliminar el agente cuyo id es: ${id}`;
+    this.agentesService.remove(+id);
+    return {
+      sucess : true,
+      agente_eliminado: id
+    }
   }
 }
