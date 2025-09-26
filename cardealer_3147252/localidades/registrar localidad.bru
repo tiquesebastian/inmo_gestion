@@ -1,0 +1,21 @@
+meta {
+  name: registrar localidad
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://loclahost:3010/localidad
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "nombre_localidad":""
+  }
+}
+
+settings {
+  encodeUrl: true
+}

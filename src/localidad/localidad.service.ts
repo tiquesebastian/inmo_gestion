@@ -7,20 +7,24 @@ import { PrismaService } from '../prisma/prisma.service'; // Adjust the path as 
 
 @Injectable()
 export class LocalidadService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(private prismaService: PrismaService) {}
 
-  create(createLocalidadDto: CreateLocalidadDto) {
-    return 'This action adds a new localidad';
+  // Implementa la creación de una localidad recibiendo el DTO
+  async create(localidadDto: CreateLocalidadDto) {
+    return await this.prismaService.localidad.create({
+      data: {
+        nombre_localidad: localidadDto.nombre_localidad,
+        // agrega aquí otros campos que tenga tu modelo
+      },
+    });
   }
 
   findAll() {
-    return this.prisma.localidad.findMany();
+    return `this action returns all localidad`;
   }
 
   findOne(id: number) {
-    return this.prisma.localidad.findFirst({
-      where: { id: id },
-    });
+    return `this action returns a #${id} localidad`;
   }
 
   update(id: number, updateLocalidadDto: UpdateLocalidadDto) {
